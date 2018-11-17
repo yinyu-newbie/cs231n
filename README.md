@@ -1,5 +1,4 @@
 # cs231n spring 2018 assignments
----
 
 - assignment 1 **[Finished]**
   - [x] k-Nearest Neighbor classifier
