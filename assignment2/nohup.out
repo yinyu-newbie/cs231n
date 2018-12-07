@@ -1,0 +1,13 @@
+[I 10:52:02.398 NotebookApp] Serving notebooks from local directory: /home/user/work/cs231n/assignment2
+[I 10:52:02.398 NotebookApp] The Jupyter Notebook is running at:
+[I 10:52:02.398 NotebookApp] http://(user or 127.0.0.1):8888/
+[I 10:52:02.398 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 10:52:02.623 NotebookApp] 302 GET / (192.168.1.161) 0.62ms
+[I 10:52:07.088 NotebookApp] Interrupted...
+[I 10:52:07.088 NotebookApp] Shutting down 0 kernels
+[I 10:52:48.146 NotebookApp] Serving notebooks from local directory: /home/user/work/cs231n/assignment2
+[I 10:52:48.146 NotebookApp] The Jupyter Notebook is running at:
+[I 10:52:48.146 NotebookApp] http://(user or 127.0.0.1):8888/
+[I 10:52:48.146 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 10:52:54.560 NotebookApp] Interrupted...
+[I 10:52:54.560 NotebookApp] Shutting down 0 kernels
