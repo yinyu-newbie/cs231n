@@ -7,7 +7,7 @@
   - [x] Two-Layer Neural Network
   - [x] Higher Level Representations: Image Features
 
-- assignment 2 **[Finished]**]
+- assignment 2 **[Finished]**
   - [x] Fully-connected Neural Network
   - [x] Batch Normalization
   - [x] Dropout
