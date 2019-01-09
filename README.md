@@ -9,7 +9,7 @@
 
 - assignment 2
   - [ ] Fully-connected Neural Network
-  - [ ] Batch Normalization
+  - [x] Batch Normalization
   - [x] Dropout
   - [ ] Convolutional Networks
   - [ ] PyTorch/TensorFlow on CIFAR-10

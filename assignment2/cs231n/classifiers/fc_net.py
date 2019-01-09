@@ -197,6 +197,9 @@ class FullyConnectedNet(object):
             
             self.params['b{}'.format(i+1)] = np.zeros(o_dims)
             
+            if self.normalization and i != self.num_layers-1:
+                self.params['gamma{}'.format(i + 1)] = np.ones(hidden_dims[i])
+                self.params['beta{}'.format(i + 1)] = np.zeros(hidden_dims[i])
         ############################################################################
         #                             END OF YOUR CODE                             #
         ############################################################################
@@ -260,11 +263,32 @@ class FullyConnectedNet(object):
         caches = {}
         
         for i in range(self.num_layers-1):
-            temp_in, caches[i+1] = affine_relu_forward(temp_in, 
-                                                 self.params['W{}'.format(i+1)],
-                                                 self.params['b{}'.format(i+1)])
+            # affine forwar
+            temp_in, caches[i+1] = affine_forward(temp_in, self.params['W{}'.format(i+1)],self.params['b{}'.format(i+1)])
+            
+            # batch normalization forward
+            if self.normalization == 'batchnorm':
+                temp_in, caches['{}_batchnorm'.format(i+1)] = batchnorm_forward(
+                    temp_in,
+                    self.params['gamma{}'.format(i+1)],
+                    self.params['beta{}'.format(i+1)],
+                    self.bn_params[i])
+            if self.normalization == "layernorm":
+                temp_in, caches['{}_layernorm'.format(i+1)] = layernorm_forward(
+                    temp_in,
+                    self.params['gamma{}'.format(i+1)],
+                    self.params['beta{}'.format(i+1)],
+                    self.bn_params[i])
+             
+            # relu forward
+            temp_in, caches['{}_relu'.format(i+1)] = relu_forward(temp_in)
+            
+            
+            # dropout 
             if self.use_dropout:
                 temp_in, caches['{}_dropout'.format(i+1)] = dropout_forward(temp_in, self.dropout_param)
+            
+            
             
         # last affine layer
         scores, caches[self.num_layers] = affine_forward(temp_in, 
@@ -308,7 +332,15 @@ class FullyConnectedNet(object):
             else:
                 if self.use_dropout:
                     dTemp = dropout_backward(dTemp, caches['{}_dropout'.format(i)])
-                dTemp, grads['W{}'.format(i)], grads['b{}'.format(i)] = affine_relu_backward(dTemp,caches[i])
+                dTemp = relu_backward(dTemp, caches['{}_relu'.format(i)])
+                if self.normalization == 'batchnorm':
+                    dTemp, grads['gamma{}'.format(i)], grads['beta{}'.format(i)] = batchnorm_backward(
+                        dTemp, caches['{}_batchnorm'.format(i)])
+                    
+                if self.normalization == 'layernorm':
+                    dTemp, grads['gamma{}'.format(i)], grads['beta{}'.format(i)] = layernorm_backward(
+                        dTemp, caches['{}_layernorm'.format(i)])
+                dTemp, grads['W{}'.format(i)], grads['b{}'.format(i)] = affine_backward(dTemp,caches[i])
             
             
             grads['W{}'.format(i)] += self.reg * self.params['W{}'.format(i)]
