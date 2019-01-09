@@ -11,5 +11,5 @@
   - [ ] Fully-connected Neural Network
   - [x] Batch Normalization
   - [x] Dropout
-  - [ ] Convolutional Networks
+  - [x] Convolutional Networks
   - [ ] PyTorch/TensorFlow on CIFAR-10
