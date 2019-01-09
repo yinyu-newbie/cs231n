@@ -242,7 +242,7 @@ class FullyConnectedNet(object):
         # behave differently during training and testing.
         if self.use_dropout:
             self.dropout_param['mode'] = mode
-        if self.normalization=='batchnorm':
+        if self.normalization=='batchnorm' or self.normalization=='layernorm':
             for bn_param in self.bn_params:
                 bn_param['mode'] = mode
         scores = None
@@ -263,7 +263,7 @@ class FullyConnectedNet(object):
         caches = {}
         
         for i in range(self.num_layers-1):
-            # affine forwar
+            # affine forward
             temp_in, caches[i+1] = affine_forward(temp_in, self.params['W{}'.format(i+1)],self.params['b{}'.format(i+1)])
             
             # batch normalization forward
@@ -289,7 +289,7 @@ class FullyConnectedNet(object):
                 temp_in, caches['{}_dropout'.format(i+1)] = dropout_forward(temp_in, self.dropout_param)
             
             
-            
+
         # last affine layer
         scores, caches[self.num_layers] = affine_forward(temp_in, 
                                                          self.params['W{}'.format(self.num_layers)],

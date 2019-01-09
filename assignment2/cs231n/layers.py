@@ -212,7 +212,7 @@ def batchnorm_forward(x, gamma, beta, bn_param):
         # Store the result in the out variable.                               #
         #######################################################################
         #pass
-        x_hat = (x - bn_param['running_mean'])/np.sqrt(bn_param['running_var'] + eps)
+        x_hat = (x - running_mean)/np.sqrt(running_var + eps)
         
         out = gamma * x_hat + beta
         #######################################################################
