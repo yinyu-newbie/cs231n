@@ -7,9 +7,9 @@
   - [x] Two-Layer Neural Network
   - [x] Higher Level Representations: Image Features
 
-- assignment 2
+- assignment 2 **[Finished]**]
   - [x] Fully-connected Neural Network
   - [x] Batch Normalization
   - [x] Dropout
   - [x] Convolutional Networks
-  - [ ] PyTorch/TensorFlow on CIFAR-10
+  - [x] PyTorch/TensorFlow on CIFAR-10
