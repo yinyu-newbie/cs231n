@@ -13,3 +13,10 @@
   - [x] Dropout
   - [x] Convolutional Networks
   - [x] PyTorch/TensorFlow on CIFAR-10
+
+- assignment 3 
+  - [ ] Image Captioning with Vanilla RNNs
+  - [ ] Image Captioning with LSTMs
+  - [ ] Network Visualization: Saliency maps, Class Visualization, and Fooling Images
+  - [ ] Style Transfer
+  - [ ] Generative Adversarial Networks
